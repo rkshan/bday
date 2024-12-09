@@ -1,0 +1,128 @@
+/* General Styles */
+body {
+    background-color: pink;
+    background-image: url('ani.mp4'), url('hearts.png');
+    background-repeat: repeat-x, repeat;
+    background-position: bottom, center;
+    font-family: cursive;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Floating Heart */
+#heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background-color: red;
+    clip-path: polygon(
+        50% 0%,  /* Top point */
+        100% 35%, /* Right curve */
+        85% 100%, /* Bottom right */
+        50% 75%, /* Bottom center */
+        15% 100%, /* Bottom left */
+        0% 35%  /* Left curve */
+    ); /* Heart shape */
+    animation: floatAround 10s infinite ease-in-out, heartBeat 1s infinite ease-in-out;
+    cursor: pointer;
+}
+
+/* Love Letter Pop-Up */
+#letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    z-index: 10;
+}
+
+/* Close Button */
+#close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Hidden State */
+.hidden {
+    display: none;
+}
+
+/* Hover Effects */
+#heart:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+#close:hover {
+    color: black;
+}
+
+/* Song Play Button */
+#playSong {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff69b4;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    animation: fadeIn 3s ease-in-out;
+}
+
+/* Animations */
+
+/* Make the heart float around the screen slowly */
+@keyframes floatAround {
+    0% {
+        transform: translate(-50%, -50%) translateX(0px) translateY(0px);
+    }
+    25% {
+        transform: translate(-50%, -50%) translateX(30px) translateY(-30px);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateX(-30px) translateY(30px);
+    }
+    75% {
+        transform: translate(-50%, -50%) translateX(-50px) translateY(-20px);
+    }
+    100% {
+        transform: translate(-50%, -50%) translateX(0px) translateY(0px);
+    }
+}
+
+/* Add a pulsing heartbeat effect */
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Fade-in animation for the play button */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
